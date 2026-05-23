@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/tvPlayerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jogador: "
+        android:textSize="14sp"
+        android:textColor="#555555"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/tvResultTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resultado"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:id="@+id/tvScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pontuação: 0"
+        android:textSize="24sp"
+        android:textColor="#2196F3"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tempo: 0s"
+        android:textSize="16sp"
+        android:textColor="#555555"
+        android:layout_marginBottom="40dp"/>
+
+    <Button
+        android:id="@+id/btnPlayAgain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="JOGAR NOVAMENTE"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#2196F3"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:id="@+id/btnHistorico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="VER HISTÓRICO"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#607D8B"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:id="@+id/btnMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MENU PRINCIPAL"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#9E9E9E"/>
+
+</LinearLayout>

@@ -149,9 +149,11 @@ class GameActivity : AppCompatActivity() {
             btn.setBackgroundColor(Color.RED)
             gameOver = true
             revealAllMines()
-            Toast.makeText(this, "💥 Você pisou em uma mina!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Você pisou em uma mina!", Toast.LENGTH_SHORT).show()
             val elapsed = ((System.currentTimeMillis() - startTime) / 1000).toInt()
-            goToResult(0, elapsed)
+            // Even if lost, give points for the cells they managed to reveal (subtracting 1 because this mine cell was just marked as revealed)
+            val score = maxOf(0, (revealedCount - 1) * 10)
+            goToResult(score, elapsed, false)
             return
         }
 
@@ -174,12 +176,12 @@ class GameActivity : AppCompatActivity() {
             }
         }
 
-        if (revealedCount == safeCells) {
+        if (revealedCount == safeCells && !gameOver) {
             gameOver = true
-            Toast.makeText(this, "🎉 Você ganhou!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Você ganhou!", Toast.LENGTH_SHORT).show()
             val elapsed = ((System.currentTimeMillis() - startTime) / 1000).toInt()
             val score = calculateScore(elapsed)
-            goToResult(score, elapsed)
+            goToResult(score, elapsed, true)
         }
     }
 
@@ -214,16 +216,16 @@ class GameActivity : AppCompatActivity() {
     private fun calculateScore(elapsedSeconds: Int): Int {
         // More score for faster time, base = revealedCount * 10
         val base = revealedCount * 10
-        val timeBonus = maxOf(0, 300 - elapsedSeconds) // Bonus for finishing under 5 min
-        return base + timeBonus
+        //val timeBonus = maxOf(0, 300 - elapsedSeconds) // Bonus for finishing under 5 min
+        return base 
     }
 
-    private fun goToResult(score: Int, elapsed: Int) {
+    private fun goToResult(score: Int, elapsed: Int, won: Boolean) {
         val intent = Intent(this, ResultActivity::class.java)
         intent.putExtra("PLAYER_NAME", playerName)
         intent.putExtra("SCORE", score)
         intent.putExtra("ELAPSED", elapsed)
-        intent.putExtra("WON", score > 0)
+        intent.putExtra("WON", won)
         startActivity(intent)
         finish()
     }

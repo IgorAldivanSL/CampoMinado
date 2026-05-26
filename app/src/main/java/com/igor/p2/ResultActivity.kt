@@ -36,7 +36,7 @@ class ResultActivity : AppCompatActivity() {
         val btnMenu = findViewById<Button>(R.id.btnMenu)
 
         tvPlayerName.text = "Jogador: $playerName"
-        tvResultTitle.text = if (won) "🎉 Você Ganhou!" else "💥 Game Over!"
+        tvResultTitle.text = if (won) "6Você Ganhou!" else "Game Over!"
         tvScore.text = "Pontuação: $score"
         tvTime.text = "Tempo: ${elapsed}s"
 
